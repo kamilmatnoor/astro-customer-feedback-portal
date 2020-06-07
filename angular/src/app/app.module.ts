@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReviewService } from './services/review/review.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   providers: [
-    UserService
+    UserService,
+    ReviewService
   ],
   bootstrap: [AppComponent]
 })
