@@ -8,10 +8,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReviewService } from './services/review/review.service';
+import { NewReviewComponent } from './pages/review/new-review/new-review.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NewReviewComponent
   ],
   imports: [
     BrowserModule,

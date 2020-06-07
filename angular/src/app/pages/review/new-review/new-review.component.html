@@ -1,0 +1,84 @@
+<div class="card-body">
+    <h5 class="card-title">New Review</h5>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <form action="" [formGroup]="reviewForm">
+                <div class="form-group">
+                    <button type="submit" style="float:right" class="btn btn-primary" (click)="goToList()">All
+                        Review</button>
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label>Email</label><span></span>
+                    <input type="text" class="form-control" formControlName="email" placeholder="eg: john@hotmail.com"
+                        [ngClass]="{ 'is-invalid': f.email.errors }" />
+                    <div *ngIf="f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Input is required</div>
+                        <div *ngIf="f.email.errors.email">Invalid email address</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" formControlName="title" placeholder="eg: john"
+                        [ngClass]="{ 'is-invalid': f.title.errors }" />
+                    <div *ngIf="f.title.errors" class="invalid-feedback">
+                        <div *ngIf="f.title.errors.required">Input is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Technical</label>
+                    <input type="text" class="form-control" formControlName="technical" placeholder="eg: john"
+                        [ngClass]="{ 'is-invalid': f.technical.errors }" />
+                    <div *ngIf="f.technical.errors" class="invalid-feedback">
+                        <div *ngIf="f.technical.errors.required">Input is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>User</label>
+                    <input type="text" class="form-control" formControlName="user" placeholder="eg: john"
+                        [ngClass]="{ 'is-invalid': f.user.errors }" />
+                    <div *ngIf="f.user.errors" class="invalid-feedback">
+                        <div *ngIf="f.user.errors.required">Input is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Management Related</label>
+                    <input type="text" class="form-control" formControlName="management_related" placeholder="eg: john"
+                        [ngClass]="{ 'is-invalid': f.management_related.errors }" />
+                    <div *ngIf="f.management_related.errors" class="invalid-feedback">
+                        <div *ngIf="f.management_related.errors.required">Input is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Competitor Related</label>
+                    <input type="text" class="form-control" formControlName="competitor_related" placeholder="eg: john"
+                        [ngClass]="{ 'is-invalid': f.competitor_related.errors }" />
+                    <div *ngIf="f.competitor_related.errors" class="invalid-feedback">
+                        <div *ngIf="f.competitor_related.errors.required">Input is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Pricing Issue</label>
+                    <input type="text" class="form-control" formControlName="pricing_issue" placeholder="eg: john"
+                        [ngClass]="{ 'is-invalid': f.pricing_issue.errors }" />
+                    <div *ngIf="f.pricing_issue.errors" class="invalid-feedback">
+                        <div *ngIf="f.pricing_issue.errors.required">Input is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Customer Case Issue</label>
+                    <input type="text" class="form-control" formControlName="customer_case_issue" placeholder="eg: john"
+                        [ngClass]="{ 'is-invalid': f.customer_case_issue.errors }" />
+                    <div *ngIf="f.customer_case_issue.errors" class="invalid-feedback">
+                        <div *ngIf="f.customer_case_issue.errors.required">Input is required</div>
+                    </div>
+                </div>
+                <button type="button" style="float:right" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+                <pre>{{reviewForm.value| json}}</pre>
+            </form>
+        </div>
+    </div>
+
+</div>
