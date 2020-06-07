@@ -9,9 +9,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Promise<any> {
+  getAll(): Promise<any> {
     return new Promise(resolve => {
-      this.http.get(`${ENV.API_URL}/users/get-users`).subscribe((response: any) => {
+      this.http.get(`${ENV.API_URL}/user/get-all`).subscribe((response: any) => {
         if (response.error) {
           console.error(response);
           return;

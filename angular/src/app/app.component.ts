@@ -9,7 +9,7 @@ import { UserService } from './services/user/user.service';
 export class AppComponent {
   title = 'angular';
   constructor(private userService: UserService) { 
-    this.userService.getUsers().then(res=> {
+    this.userService.getAll().then(res=> {
       console.log(res)
     })
   }
