@@ -25,4 +25,16 @@ router.post("/add-new", (req, res, next) => {
     }
 });
 
+router.post("/update-rating", (req, res, next) => {
+    try {
+        Review.updateRating({
+            data: req.body
+        }).then(response => {
+            res.json(response);
+        });
+    } catch (err) {
+        console.error("Opps!! Something went wrong:", err.message);
+    }
+});
+
 module.exports = router;

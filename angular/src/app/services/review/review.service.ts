@@ -34,5 +34,18 @@ export class ReviewService {
       });
     });
   }
+
+  updateRating(req): Promise<any> {
+    return new Promise(resolve => {
+      this.http.post(`${ENV.API_URL}/review/update-rating`, req.data).subscribe((response: any) => {
+        if (response.error) {
+          console.error(response);
+          return;
+        }
+
+        resolve(response);
+      });
+    });
+  }
 }
 
