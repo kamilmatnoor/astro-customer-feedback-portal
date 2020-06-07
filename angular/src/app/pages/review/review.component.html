@@ -1,0 +1,25 @@
+<div>
+    <div>
+        <ng-container>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Search" (keydown.enter)="onEnterPressed($event)"
+                    autofocus>
+            </div>
+        </ng-container>
+    </div>
+    <div>
+        <ng-container *ngIf="review.length > 0">
+            <ul class="p-0">
+                <li class="media text-muted pt-3" *ngFor="let r of review">
+                    <p>{{r.title}}</p>
+                </li>
+            </ul>
+            <br>
+            <!-- <div class="text-center">
+                <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+                <pagination-controls (pageChange)="onRetrieving($event)" id="server" previousLabel="" nextLabel=""></pagination-controls>
+                </pagination-controls>
+            </div> -->
+        </ng-container>
+    </div>
+</div>

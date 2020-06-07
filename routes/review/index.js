@@ -3,7 +3,7 @@ var router = express.Router();
 
 const Review = require('../../services/review');
 
-router.get("/", (req, res, next) => {
+router.get("/get-all", (req, res, next) => {
     try {
         Review.getAll().then(response => {
             res.json(response);

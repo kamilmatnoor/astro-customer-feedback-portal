@@ -9,11 +9,15 @@ import { UserService } from './services/user/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReviewService } from './services/review/review.service';
 import { NewReviewComponent } from './pages/review/new-review/new-review.component';
+import { ReviewComponent } from './pages/review/review.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewReviewComponent
+    NewReviewComponent,
+    ReviewComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
