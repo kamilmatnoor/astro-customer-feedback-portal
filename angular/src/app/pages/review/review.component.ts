@@ -64,6 +64,8 @@ export class ReviewComponent implements OnInit {
   }
 
   addLike(id, total_like, total_dislike) {
+    total_dislike = total_dislike ? total_dislike : 0
+    total_like = total_like ? total_like : 0
     this.spinner.show()
     this.reviewService.updateRating({
       id,
@@ -90,6 +92,8 @@ export class ReviewComponent implements OnInit {
   }
 
   addDislike(id, total_like, total_dislike) {
+    total_dislike = total_dislike ? total_dislike : 0
+    total_like = total_like ? total_like : 0
     this.spinner.show()
     this.reviewService.updateRating({
       id,

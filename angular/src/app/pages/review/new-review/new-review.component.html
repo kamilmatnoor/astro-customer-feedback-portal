@@ -32,7 +32,7 @@
                                         <div *ngIf="f.title.errors.required">Input is required</div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" *ngIf="review_types">
                                     <label>Review Type</label>
                                     <select class="custom-select"
                                         [ngClass]="{ 'is-invalid': isSubmitted && f.review_type.errors }"
