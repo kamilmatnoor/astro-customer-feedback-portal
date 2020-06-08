@@ -37,4 +37,24 @@ router.post("/update-rating", (req, res, next) => {
     }
 });
 
+router.get("/get-review-types", (req, res, next) => {
+    try {
+        Review.getReviewTypes().then(response => {
+            res.json(response);
+        });
+    } catch (err) {
+        console.error("Opps!! Something went wrong:", err.message);
+    }
+});
+
+router.get("/get-review-by-email/:email", (req, res, next) => {
+    try {
+        Review.getReviewByEmail(req.params.email).then(response => {
+            res.json(response);
+        });
+    } catch (err) {
+        console.error("Opps!! Something went wrong:", err.message);
+    }
+});
+
 module.exports = router;
