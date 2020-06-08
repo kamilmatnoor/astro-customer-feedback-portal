@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 const Review = (() => {
     const getAll = req =>
         new Promise((resolve, reject) => {
-            const query = `select a.id, a.review_id, a.user_id, a.title, b.email, c.review_type_id, c.description, c.total_like, c.total_dislike, d.description as review_desc from review a left join user b on a.user_id = b.user_id left join review_detail c on a.review_id = c.review_id left join review_type d on d.id = c.review_type_id`
+            const query = `select a.id, a.review_id, a.user_id, a.title, b.email, c.review_type_id, c.description, c.total_like, c.total_dislike, d.description as review_desc from review a left join user b on a.user_id = b.user_id left join review_detail c on a.review_id = c.review_id left join review_type d on d.id = c.review_type_id order by c.total_like desc`
 
             db.query(query, (err, results) => {
                 if (err) {
@@ -70,9 +70,6 @@ const Review = (() => {
             let total_like = req.data.total_like
             let total_dislike = req.data.total_dislike
             let review_id = req.data.id
-            console.log(total_like)
-            console.log(total_dislike)
-            console.log(review_id)
             const query = `update review_detail set total_like = ${total_like}, total_dislike = ${total_dislike} where review_id = ${review_id}`
 
             db.query(query, (err, results) => {
@@ -109,7 +106,7 @@ const Review = (() => {
 
     const getReviewByEmail = email =>
         new Promise((resolve, reject) => {
-            const query = `select a.id, a.review_id, a.user_id, a.title, b.email, c.review_type_id, c.description, c.total_like, c.total_dislike, d.description as review_desc from review a left join user b on a.user_id = b.user_id left join review_detail c on a.review_id = c.review_id left join review_type d on d.id = c.review_type_id where b.email= "${email}"`
+            const query = `select a.id, a.review_id, a.user_id, a.title, b.email, c.review_type_id, c.description, c.total_like, c.total_dislike, d.description as review_desc from review a left join user b on a.user_id = b.user_id left join review_detail c on a.review_id = c.review_id left join review_type d on d.id = c.review_type_id where b.email= "${email}" order by c.total_like desc`
 
             db.query(query, (err, results) => {
                 if (err) {
