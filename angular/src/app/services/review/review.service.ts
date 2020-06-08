@@ -36,8 +36,36 @@ export class ReviewService {
   }
 
   updateRating(req): Promise<any> {
+    console.log(req)
     return new Promise(resolve => {
-      this.http.post(`${ENV.API_URL}/review/update-rating`, req.data).subscribe((response: any) => {
+      this.http.post(`${ENV.API_URL}/review/update-rating`, req).subscribe((response: any) => {
+        if (response.error) {
+          console.error(response);
+          return;
+        }
+
+        resolve(response);
+      });
+    });
+  }
+
+  getReviewTypes(): Promise<any> {
+    return new Promise(resolve => {
+      this.http.get(`${ENV.API_URL}/review/get-review-types`).subscribe((response: any) => {
+        if (response.error) {
+          console.error(response);
+          return;
+        }
+
+        resolve(response);
+      });
+    });
+  }
+
+  getReviewByEmail(req): Promise<any> {
+    return new Promise(resolve => {
+      console.log(req)
+      this.http.get(`${ENV.API_URL}/review/get-review-by-email/${req.email}`).subscribe((response: any) => {
         if (response.error) {
           console.error(response);
           return;

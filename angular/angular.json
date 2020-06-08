@@ -28,9 +28,23 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/vendor/css/multicheck/multicheck.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/vendor/dist/css/style.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/vendor/js/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js",
+              "src/assets/vendor/js/sparkline/sparkline.js",
+              "src/assets/vendor/js/waves/waves.js",
+              "src/assets/vendor/js/sidebarmenu/sidebarmenu.js",
+              "src/assets/vendor/js/custom/custom.min.js",
+              "src/assets/vendor/js/multicheck/datatable-checkbox-init.js",
+              "src/assets/vendor/js/multicheck/jquery.multicheck.js"
+            ]
           },
           "configurations": {
             "production": {
