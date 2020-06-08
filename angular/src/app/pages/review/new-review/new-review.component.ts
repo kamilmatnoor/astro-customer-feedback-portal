@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReviewService } from 'src/app/services/review/review.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from "sweetalert2";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-new-review',
@@ -16,13 +17,16 @@ export class NewReviewComponent implements OnInit {
 
   review_types: any = []
 
-  constructor(private formBuilder: FormBuilder, private reviewService: ReviewService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder, private reviewService: ReviewService, private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner.show()
     this.reviewService.getReviewTypes().then((res) => {
       this.review_types = res.data
+      this.spinner.hide()
     }, (err) => {
       this.review_types = []
+      this.spinner.show()
     })
 
     /*########### Form ###########*/
@@ -39,9 +43,11 @@ export class NewReviewComponent implements OnInit {
     if (!this.reviewForm.valid) {
       return false;
     } else {
+      this.spinner.show()
       this.reviewService.addNew({
         data: this.reviewForm.value
       }).then((res: any) => {
+        this.spinner.hide()
         Swal.fire({
           title: 'Congratulations',
           text: "Record(s) was added successfully",
@@ -56,6 +62,7 @@ export class NewReviewComponent implements OnInit {
         })
       }, (err) => {
         // todo: err handler
+        this.spinner.show()
       })
     }
 

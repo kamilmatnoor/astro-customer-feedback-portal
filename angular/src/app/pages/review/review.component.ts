@@ -3,6 +3,7 @@ import { ReviewService } from 'src/app/services/review/review.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from "sweetalert2";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-review',
@@ -16,7 +17,7 @@ export class ReviewComponent implements OnInit {
 
   searchForm: FormGroup;
 
-  constructor(private reviewService: ReviewService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
+  constructor(private reviewService: ReviewService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.setupContent()
@@ -27,22 +28,28 @@ export class ReviewComponent implements OnInit {
   }
 
   setupContent() {
+    this.spinner.show()
     this.reviewService.getAll().then((res) => {
       this.review = res.data
+      this.spinner.hide()
     }, (err) => {
       this.review = []
+      this.spinner.hide()
     })
   }
 
   onSubmit() {
     let email = this.searchForm.value.email
     if (email) {
+      this.spinner.show()
       this.reviewService.getReviewByEmail({
         email: this.searchForm.value.email
       }).then((res) => {
         this.review = res.data
+        this.spinner.hide()
       }, (err) => {
         this.review = []
+        this.spinner.hide()
       })
     }
   }
@@ -57,11 +64,13 @@ export class ReviewComponent implements OnInit {
   }
 
   addLike(id, total_like, total_dislike) {
+    this.spinner.show()
     this.reviewService.updateRating({
       id,
       total_like: total_like + 1,
       total_dislike
     }).then((res) => {
+      this.spinner.hide()
       Swal.fire({
         title: 'Congratulations',
         text: "Record(s) was added successfully",
@@ -76,15 +85,18 @@ export class ReviewComponent implements OnInit {
       })
     }, (err) => {
       this.review = []
+      this.spinner.hide()
     })
   }
 
   addDislike(id, total_like, total_dislike) {
+    this.spinner.show()
     this.reviewService.updateRating({
       id,
       total_like,
       total_dislike: total_dislike + 1
     }).then((res) => {
+      this.spinner.hide()
       Swal.fire({
         title: 'Congratulations',
         text: "Record(s) was added successfully",
@@ -99,6 +111,7 @@ export class ReviewComponent implements OnInit {
       })
     }, (err) => {
       this.review = []
+      this.spinner.hide()
     })
   }
 }
