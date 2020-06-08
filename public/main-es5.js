@@ -1795,7 +1795,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var environment = {
       production: false,
-      API_URL: 'http://localhost:7080/api'
+      // API_URL: 'http://localhost:7080/api',
+      API_URL: 'api'
     };
     /*
      * For easier debugging in development mode, you can import the following file
