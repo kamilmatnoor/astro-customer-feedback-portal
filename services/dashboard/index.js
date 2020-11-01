@@ -95,7 +95,10 @@ const Dashboard = (() => {
 
             let sql = `select case_date as code, DATE_FORMAT(case_date,'%d-%b-%Y') as description from patient group by case_date`
 
+            console.log(sql)
             db.query(sql, (err, results) => {
+                console.log(err)
+                console.log(results)
                 if (err) {
                     reject({
                         error: true,
@@ -185,7 +188,6 @@ const Dashboard = (() => {
                     x_a.push(results[i].case_date_desc)
                     y_a.push(results[i].no_of_case)
                 }
-
 
                 resolve({
                     error: false,
